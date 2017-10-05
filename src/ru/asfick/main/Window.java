@@ -23,12 +23,16 @@ public class Window {
 	private int height;
 	private int width;
 	
+	private Render rend;
+	
 	public Window(int width, int height, String title, long monitor, long share) {
 		this.width = width;
 		this.height = height;
 		this.title = title;
 		this.monitor = monitor;
 		this.share = share;
+		
+		rend = new Render();
 	}
 	
 	public void run() {
@@ -46,14 +50,16 @@ public class Window {
 	
 	private void init() {
 		GLFWErrorCallback.createPrint(System.err).set();
-		if(!glfwInit()) throw new IllegalStateException("Unable to initialize GLFW");
+		if(!glfwInit())
+			throw new IllegalStateException("Unable to initialize GLFW");
 		glfwDefaultWindowHints();
 		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 		
 		
 		window = glfwCreateWindow(width, height, title, monitor, share);
-		if(window == NULL) throw new RuntimeException("Failed to create the GLFW window");
+		if(window == NULL) 
+			throw new RuntimeException("Failed to create the GLFW window");
 		
 		glfwSetKeyCallback(window, (window, key, scancode, action, mods) ->{
 			if(key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) glfwSetWindowShouldClose(window, true);
@@ -75,18 +81,29 @@ public class Window {
 		glfwSwapInterval(1);
 		
 		glfwShowWindow(window);
+		
 	}
+		
 	
 	private void loop() {
 		GL.createCapabilities();
+		
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, width, 0, height, 1, -1);
+		glMatrixMode(GL_VIEWPORT);
+		
 		glClearColor(0.8f, 0.2f, 0.2f, 1f);
 		
 		while(!glfwWindowShouldClose(window)) {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			
+			Render.renderWall(width, height);
+			
 			glfwSwapBuffers(window);
 			
 			glfwPollEvents();
+			
 		}
 	}
 }
