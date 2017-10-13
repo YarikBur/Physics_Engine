@@ -41,6 +41,8 @@ public class Window {
 		init();
 		loop();
 		
+		System.out.println("Bie");
+		
 		glfwFreeCallbacks(window);
 		glfwDestroyWindow(window);
 		

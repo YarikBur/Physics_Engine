@@ -17,7 +17,7 @@ public class Room {
 	
 	public static void mainRoom() {
 		init();
-		fillRoom(3, 3, 4, 2);
+		fillRoom(3, 5, 4, 2);
 		printRoom();
 		checkRoom();
 		printRoom();
@@ -111,7 +111,7 @@ public class Room {
 					room1[8-d][d] = 0;
 					if(d!=3)
 						for(int i=0; i<3; i++) {
-							if(8-d-i-1>=6) room1[8-d-i-1][d] = room1[4][7];
+							if(8-d-i-1>=6) room1[8-d-i-1][d] = room1[4][1];
 							if(d+i+1<3) room1[8-d][d+i+1] = room1[7][4];
 						}
 				}
@@ -126,7 +126,7 @@ public class Room {
 					room1[8-d][8-d] = 0;
 					for(int i=0; i<3; i++) {
 						if(8-d-i-1>=6) {
-							room1[8-d-i-1][8-d] = room1[4][1];
+							room1[8-d-i-1][8-d] = room1[4][7];
 							room1[8-d][8-d-i-1] = room1[7][4];
 						}
 					}
