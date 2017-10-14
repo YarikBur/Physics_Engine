@@ -1,9 +1,11 @@
-package ru.asfick.main;
+package ru.yarikbur.main;
 
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
 import org.lwjgl.system.*;
+
+import ru.yarikbur.render.Render;
 
 import java.nio.*;
 
@@ -100,8 +102,9 @@ public class Window {
 		while(!glfwWindowShouldClose(window)) {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			
-			Render.renderWall(width, height);
-			
+			rend.update();
+			rend.render(width, height);
+
 			glfwSwapBuffers(window);
 			
 			glfwPollEvents();

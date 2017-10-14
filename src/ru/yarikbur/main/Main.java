@@ -1,4 +1,4 @@
-package ru.asfick.main;
+package ru.yarikbur.main;
 
 public class Main {
 	private static Window window;

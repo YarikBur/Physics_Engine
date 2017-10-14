@@ -1,4 +1,4 @@
-package ru.asfick.main;
+package ru.yarikbur.main;
 
 public class Room {
 	private static int room[][] = new int[3][3];
