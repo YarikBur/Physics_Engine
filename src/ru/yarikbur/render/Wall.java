@@ -6,31 +6,30 @@ import static org.lwjgl.opengl.GL11.glColor3f;
 import static org.lwjgl.opengl.GL11.glEnd;
 import static org.lwjgl.opengl.GL11.glVertex2f;
 
-import ru.yarikbur.main.Room;
 import ru.yarikbur.utils.Vertex;
 
 public class Wall {
-	private static int room[][];
+	private int[][] coordinates;
+	private float color;
 	
-	public Wall(){
-		Room.mainRoom();
-		room = Room.getRoom();
+	public Wall(int[][] coordinates, float color) {
+		this.coordinates = coordinates;
+		this.color = color;
 	}
 	
-	public static void renderWall(int w, int h) {
-		for(int i=0; i<4; i++) {
-			if(i==0) {
-				glColor3f(room[1][4]/10, room[1][4]/10, room[1][4]/10);
-				if(room[1][1]==0) {
-					Vertex.vertex2(null, w, h);
-					blockRender(Vertex.getTop(), Vertex.getRight(), Vertex.getBottom(), Vertex.getLeft());
-				}
-			}
-		}
+	public void render() {
+//		for(int i=0; i<coordinates.length; i++) {
+//			
+//		}
+		blockRender(Vertex.vertex(coordinates[0][0], coordinates[0][1]),
+				Vertex.vertex(coordinates[1][0], coordinates[1][1]),
+				Vertex.vertex(coordinates[2][0], coordinates[2][1]),
+				Vertex.vertex(coordinates[3][0], coordinates[3][1]));
 	}
 	
-	private static void blockRender(int top[], int right[], int bottom[], int left[]) {
+	private void blockRender(int top[], int right[], int bottom[], int left[]) {
 		glBegin(GL_QUADS);
+		glColor3f((color/255), (color/255), (color/255));
 		glVertex2f(top[0], top[1]);
 		glVertex2f(right[0], right[1]);
 		glVertex2f(bottom[0], bottom[1]);

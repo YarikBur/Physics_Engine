@@ -2,7 +2,7 @@ package ru.yarikbur.render;
 
 public class Render {
 	public Render() {
-		new Wall();
+		new Walls();
 		new Ball();
 	}
 	
@@ -11,7 +11,7 @@ public class Render {
 	}
 	
 	public void render(int width, int height) {
-		Wall.renderWall(width, height);
+		Walls.renderWall(width, height);
 		Ball.render();
 	}
 }

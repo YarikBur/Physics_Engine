@@ -21,11 +21,21 @@ public class Vertex {
 	
 	public static void vertex2(int massive[][], int w, int h) {
 		for(int i=0; i<4; i++) {
-			if(i==0) vertex(top, 0, h);
-			else if(i==1) vertex(right, w, h);
-			else if(i==2) vertex(bottom, w-50, h-50);
-			else vertex(left, 50, h-50);
+			if(i==0) vertex(left, 0, 0);
+			else if(i==1) vertex(top, 50, 50);
+			else if(i==2) vertex(right, w-50, 50);
+			else vertex(bottom, w, 0);
 		}
+	}
+	
+	public static int[][] vertex(int[] a, int[] b, int[] c, int[] d){
+		int[][] v = {a, b, c, d};
+		return v;
+	}
+	
+	public static int[] vertex(int one, int two) {
+		int[] v = {one, two};
+		return v;
 	}
 	
 	public static void vertex(int massive[], int one, int two) {

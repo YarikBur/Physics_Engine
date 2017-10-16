@@ -7,13 +7,13 @@ public class Gravity {
 		forse = 0;
 	}
 	
-	public static int[] gravity(int[] obj) {
+	public static int[] gravity(int[] obj, int weight) {
 		int[] gr = obj;
 		gr[1] -= forse;
 		if(forse>=10)
 			forse=10;
 		else
-			forse+=0.25f;
+			forse+=(weight/100);
 		return gr;
 	}
 }

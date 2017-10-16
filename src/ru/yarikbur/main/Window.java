@@ -86,6 +86,7 @@ public class Window {
 		
 		glfwShowWindow(window);
 		
+		Room.mainRoom();
 	}
 		
 	

@@ -6,6 +6,11 @@ import ru.yarikbur.utils.Gravity;
 
 public class Ball {
 	private static int[] coordinates = {500, 500};
+	private static int weight = 50;
+	
+	public static int getWeight() {
+		return weight;
+	}
 	
 	public static int[] getCoordinates() {
 		return coordinates;
@@ -16,7 +21,7 @@ public class Ball {
 	}
 
 	public static void update() {
-		Ball.coordinates = Gravity.gravity(Ball.coordinates);
+		Ball.coordinates = Gravity.gravity(Ball.coordinates, weight);
 	}
 	
 	public static void render() {
