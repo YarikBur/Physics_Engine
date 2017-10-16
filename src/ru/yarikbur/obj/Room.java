@@ -1,6 +1,5 @@
-package ru.yarikbur.main;
+package ru.yarikbur.obj;
 
-import ru.yarikbur.render.Wall;
 import ru.yarikbur.render.Walls;
 import ru.yarikbur.utils.Vertex;
 

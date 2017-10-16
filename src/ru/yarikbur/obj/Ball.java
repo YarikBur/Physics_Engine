@@ -1,4 +1,4 @@
-package ru.yarikbur.render;
+package ru.yarikbur.obj;
 
 import static org.lwjgl.opengl.GL11.*;
 

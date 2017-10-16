@@ -5,6 +5,7 @@ import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
 import org.lwjgl.system.*;
 
+import ru.yarikbur.obj.Room;
 import ru.yarikbur.render.Render;
 
 import java.nio.*;

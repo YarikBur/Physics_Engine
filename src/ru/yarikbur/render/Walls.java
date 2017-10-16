@@ -3,6 +3,8 @@ package ru.yarikbur.render;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.yarikbur.obj.Wall;
+
 public class Walls {
 	private static List<Wall> walls = new ArrayList<Wall>();
 	

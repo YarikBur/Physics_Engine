@@ -1,5 +1,7 @@
 package ru.yarikbur.render;
 
+import ru.yarikbur.obj.Ball;
+
 public class Render {
 	public Render() {
 		new Walls();
