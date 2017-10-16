@@ -7,6 +7,11 @@ import ru.yarikbur.utils.Gravity;
 public class Ball {
 	private static int[] coordinates = {500, 500};
 	private static int weight = 50;
+	private static Gravity gravity;
+	
+	public Ball() {
+		gravity = new Gravity();
+	}
 	
 	public static int getWeight() {
 		return weight;
@@ -21,7 +26,9 @@ public class Ball {
 	}
 
 	public static void update() {
-		Ball.coordinates = Gravity.gravity(Ball.coordinates, weight);
+		if(Ball.coordinates[1]-Math.sin(90)*30 <= 50)
+			gravity.bounce();
+		Ball.coordinates = gravity.gravity(Ball.coordinates, Ball.weight);
 	}
 	
 	public static void render() {

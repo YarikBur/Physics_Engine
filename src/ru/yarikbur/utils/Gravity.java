@@ -1,19 +1,23 @@
 package ru.yarikbur.utils;
 
 public class Gravity {
-	private static float forse = 0;
+	private float forse = 0;
+	private float forse2 = 0;
 	
-	public static void resetForse() {
+	public void bounce() {
+		forse2 = forse;
 		forse = 0;
 	}
-	
-	public static int[] gravity(int[] obj, int weight) {
+
+	public int[] gravity(int[] obj, int weight) {
 		int[] gr = obj;
-		gr[1] -= forse;
-		if(forse>=10)
-			forse=10;
+		gr[1] -= (forse-forse2);
+		if((forse+(9.8f*(weight/1000)))<10)
+			forse+=9.8f*(weight/1000);
 		else
-			forse+=(weight/100);
+			forse=10;
+		System.out.println(gr[1] + "  " + forse + "  " + (float)(50/1000));
+		
 		return gr;
 	}
 }

@@ -18,9 +18,6 @@ public class Wall {
 	}
 	
 	public void render() {
-//		for(int i=0; i<coordinates.length; i++) {
-//			
-//		}
 		blockRender(Vertex.vertex(coordinates[0][0], coordinates[0][1]),
 				Vertex.vertex(coordinates[1][0], coordinates[1][1]),
 				Vertex.vertex(coordinates[2][0], coordinates[2][1]),
