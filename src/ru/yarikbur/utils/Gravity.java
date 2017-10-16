@@ -16,7 +16,7 @@ public class Gravity {
 			forse+=9.8f*(weight/1000);
 		else
 			forse=10;
-		System.out.println(gr[1] + "  " + forse + "  " + (float)(50/1000));
+		System.out.println(gr[1] + "  " + forse + "  " + (float)(9.8f*(50/1000)));
 		
 		return gr;
 	}
