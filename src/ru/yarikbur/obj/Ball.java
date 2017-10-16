@@ -5,7 +5,7 @@ import static org.lwjgl.opengl.GL11.*;
 import ru.yarikbur.utils.Gravity;
 
 public class Ball {
-	private static int[] coordinates = {500, 500};
+	private static float[] coordinates = {500, 500};
 	private static int weight = 50;
 	private static Gravity gravity;
 	
@@ -17,11 +17,11 @@ public class Ball {
 		return weight;
 	}
 	
-	public static int[] getCoordinates() {
+	public static float[] getCoordinates() {
 		return coordinates;
 	}
 	
-	public static void setCoordinates(int[] coordinates) {
+	public static void setCoordinates(float[] coordinates) {
 		Ball.coordinates = coordinates;
 	}
 

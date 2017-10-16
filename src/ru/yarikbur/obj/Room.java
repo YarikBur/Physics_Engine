@@ -4,7 +4,6 @@ import ru.yarikbur.render.Walls;
 import ru.yarikbur.utils.Vertex;
 
 public class Room {
-	private static int room[][] = new int[3][3];
 	private static int room1[][] = new int [9][9];
 	
 	public static int[][] getRoom() {
@@ -20,27 +19,18 @@ public class Room {
 	
 	public static void mainRoom() {
 		init();
-		fillRoom(3, 3, 4, 2);
+		fillRoom(3, 5, 4, 2);
 		printRoom();
 		checkRoom();
 		printRoom();
 		createWalls();
 	}
 	private static void init() {
-		for(int y=0; y<3; y++)
-			for(int x=0; x<3; x++)
-				room[y][x] = 0;
-		
 		for(int y=0; y<9; y++)
 			for(int x=0; x<9; x++)
 				room1[y][x]=1;
 	}
 	private static void printRoom() {
-//		for(int y=0; y<3; y++) {
-//			for(int x=0; x<3; x++)
-//				System.out.print(room[y][x]);
-//			System.out.print('\n');
-//		}
 		for(int y=1; y<10; y++) {
 			for(int x=1; x<10; x++) {
 				System.out.print(room1[y-1][x-1]+" ");
@@ -110,15 +100,7 @@ public class Room {
 	
 	private static void checkRoom() {
 		System.out.println("\nIF\n");
-//		if(room[0][1] != 0 && room[1][0] != 0 && room[0][1] == room[1][0])
-//			room[0][0] = room[0][1];
-//		if(room[0][1] != 0 && room[1][2] != 0 && room[0][1] == room[1][2])
-//			room[0][2] = room[0][1];
-//		if(room[1][0] != 0 && room[2][1] != 0 && room[1][0] == room[2][1])
-//			room[2][0] = room[1][0];
-//		if(room[1][2] != 0 && room[2][1] != 0 && room[1][2] == room[2][1])
-//			room[2][2] = room[1][2];
-		
+
 		if(room1[1][4] != 0 && room1[4][1] !=0)
 			if(room1[1][4] == room1[4][1])
 				for(int y=0; y<3; y++)
@@ -135,18 +117,9 @@ public class Room {
 								room1[d-i][d] = room1[1][4];
 							}
 						}
-//						if(d==1) {
-//							room1[d][d-1] = 3;
-//							room1[d-1][d] = 4;
-//						}
-//						else if(d==2) {
-//							room1[d][d-1] = 3;
-//							room1[d][d-2] = 3;
-//							room1[d-1][d] = 4;
-//							room1[d-2][d] = 4;
-//						}
 				}
 			}
+		
 		if(room1[1][4] != 0 && room1[4][7] !=0) {
 			if(room1[1][4] == room1[4][7])
 				for(int y=0; y<3; y++)
@@ -200,12 +173,6 @@ public class Room {
 		}
  	}
 	private static void fillRoom(int top, int right, int bottom, int left) {
-//		room[0][1] = 2;
-//		room[0][1] = 1;
-//		room[1][0] = 1;
-//		room[1][2] = 1;
-//		room[2][1] = 1;
-		
 		for(int y=0; y<9; y++) {
 			if(top!=0)
 				if(y<3)
