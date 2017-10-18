@@ -4,7 +4,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 import ru.yarikbur.utils.Gravity;
 
-public class Ball {
+public class Ball implements Obj {
 	private static float[] coordinates = {500, 500};
 	private static int weight = 50;
 	private static Gravity gravity;
@@ -13,22 +13,22 @@ public class Ball {
 		gravity = new Gravity();
 	}
 	
-	public static int getWeight() {
+	public int getWeight() {
 		return weight;
 	}
 	
-	public static float[] getCoordinates() {
+	public float[] getCoordinates() {
 		return coordinates;
 	}
 	
-	public static void setCoordinates(float[] coordinates) {
+	public void setCoordinates(float[] coordinates) {
 		Ball.coordinates = coordinates;
 	}
 
-	public static void update() {
+	public void update() {
 		if(Ball.coordinates[1]-Math.sin(90)*30 <= 50)
 			gravity.bounce();
-		Ball.coordinates = gravity.gravity(Ball.coordinates, Ball.weight);
+		Ball.coordinates = gravity.gravity(this);
 	}
 	
 	public static void render() {

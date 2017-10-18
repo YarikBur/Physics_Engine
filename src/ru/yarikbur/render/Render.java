@@ -3,13 +3,15 @@ package ru.yarikbur.render;
 import ru.yarikbur.obj.Ball;
 
 public class Render {
+	Ball ball;
+	
 	public Render() {
 		new Walls();
-		new Ball();
+		ball = new Ball();
 	}
 	
 	public void update() {
-		Ball.update();
+		ball.update();
 	}
 	
 	public void render(int width, int height) {
