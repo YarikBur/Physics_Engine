@@ -8,9 +8,18 @@ public class Ball implements Obj {
 	private static float[] coordinates = {500, 500};
 	private static int weight = 50;
 	private static Gravity gravity;
+	private static float speed = 0;
 	
 	public Ball() {
 		gravity = new Gravity();
+	}
+	
+	public float getSpeed() {
+		return speed;
+	}
+	
+	public void setSpeed(float speed) {
+		Ball.speed = speed;
 	}
 	
 	public int getWeight() {
