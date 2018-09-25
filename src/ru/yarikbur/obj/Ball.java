@@ -1,17 +1,19 @@
 package ru.yarikbur.obj;
 
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.GL_TRIANGLE_FAN;
+import static org.lwjgl.opengl.GL11.glBegin;
+import static org.lwjgl.opengl.GL11.glColor3f;
+import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glVertex2d;
+import static org.lwjgl.opengl.GL11.glVertex2f;
 
-import ru.yarikbur.utils.Gravity;
-
-public class Ball implements Obj {
+public class Ball{
 	private static float[] coordinates = {500, 500};
 	private static int weight = 50;
-	private static Gravity gravity;
 	private static float speed = 0;
 	
 	public Ball() {
-		gravity = new Gravity();
+		
 	}
 	
 	public float getSpeed() {
@@ -33,22 +35,16 @@ public class Ball implements Obj {
 	public void setCoordinates(float[] coordinates) {
 		Ball.coordinates = coordinates;
 	}
-
-	public void update() {
-		if(Ball.coordinates[1]-Math.sin(90)*30 <= 50)
-			gravity.bounce();
-		Ball.coordinates = gravity.gravity(this);
-	}
 	
-	public static void render() {
+	public void render() {
 		glBegin(GL_TRIANGLE_FAN);
-		glColor3f(1, 1, 1);
-		glVertex2f(Ball.coordinates[0], Ball.coordinates[1]);
-		for(float angle=0; angle<2*Math.PI+0.15f; angle+=0.2f) {
-			double x = Ball.coordinates[0]+Math.sin(angle)*30;
-			double y = Ball.coordinates[1]+Math.cos(angle)*30;
-			glVertex2d(x, y);
-		}
+			glColor3f(1, 1, 1);
+			glVertex2f(Ball.coordinates[0], Ball.coordinates[1]);
+			for(float angle=0; angle<2*Math.PI+0.15f; angle+=0.2f) {
+				double x = Ball.coordinates[0]+Math.sin(angle)*30;
+				double y = Ball.coordinates[1]+Math.cos(angle)*30;
+				glVertex2d(x, y);
+			}
 		glEnd();
 	}
 }

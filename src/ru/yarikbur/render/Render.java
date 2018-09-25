@@ -1,21 +1,15 @@
 package ru.yarikbur.render;
 
 import ru.yarikbur.obj.Ball;
+import ru.yarikbur.obj.Square;
 
 public class Render {
-	Ball ball;
+	static Ball ball = new Ball();
+	static int floor[][] = {{100,0}, {600, 50}};
+	static Square square = new Square(floor, 5f);
 	
-	public Render() {
-		new Walls();
-		ball = new Ball();
-	}
-	
-	public void update() {
-		ball.update();
-	}
-	
-	public void render(int width, int height) {
-		Walls.renderWall(width, height);
-		Ball.render();
+	public static void render() {
+		ball.render();
+		square.render();
 	}
 }
