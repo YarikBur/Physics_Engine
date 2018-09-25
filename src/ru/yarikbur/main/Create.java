@@ -17,7 +17,7 @@ public class Create {
 		int[][] ballC= {{400, 400}, {30, 30}};
 		ball = new Ball(ballC, 5, true, 255);
 		
-		int floor[][] = {{100,0}, {600, 35}};
+		int floor[][] = {{100,0}, {200, 10}};
 		quadrilateral = new Quadrilateral(floor, 100, false, 50f);
 	}
 	
