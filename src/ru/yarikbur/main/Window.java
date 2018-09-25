@@ -119,6 +119,8 @@ public class Window{
 		glOrtho(0, width, 0, height, 1, -1);
 		glMatrixMode(GL_VIEWPORT);
 		
+		Create.create();
+		
 		while(!glfwWindowShouldClose(window)) {
 			Loop.render();
 			

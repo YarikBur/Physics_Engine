@@ -7,44 +7,82 @@ import static org.lwjgl.opengl.GL11.glEnd;
 import static org.lwjgl.opengl.GL11.glVertex2d;
 import static org.lwjgl.opengl.GL11.glVertex2f;
 
-public class Ball{
-	private static float[] coordinates = {500, 500};
-	private static int weight = 50;
-	private static float speed = 0;
+public class Ball implements Obj{
+//	[] - X, Y; [] - Right, Top
+	private int[][] coordinates;
+	private int[] force = new int[2];
+	private int weight;
+	private int id;
+	private boolean attraction;
+	private float color;
 	
-	public Ball() {
-		
-	}
 	
-	public float getSpeed() {
-		return speed;
-	}
-	
-	public void setSpeed(float speed) {
-		Ball.speed = speed;
-	}
-	
-	public int getWeight() {
-		return weight;
-	}
-	
-	public float[] getCoordinates() {
-		return coordinates;
-	}
-	
-	public void setCoordinates(float[] coordinates) {
-		Ball.coordinates = coordinates;
+	public Ball(int[][] coordinates, int weight, boolean attraction, float color) {
+		this.setCoordinates(coordinates);
+		this.setWeight(weight);
+		this.setAttraction(attraction);
+		this.color = color;
 	}
 	
 	public void render() {
 		glBegin(GL_TRIANGLE_FAN);
-			glColor3f(1, 1, 1);
-			glVertex2f(Ball.coordinates[0], Ball.coordinates[1]);
+			glColor3f((color/255), (color/255), (color/255));
+			glVertex2f(coordinates[0][0], coordinates[0][1]);
 			for(float angle=0; angle<2*Math.PI+0.15f; angle+=0.2f) {
-				double x = Ball.coordinates[0]+Math.sin(angle)*30;
-				double y = Ball.coordinates[1]+Math.cos(angle)*30;
+				double x = coordinates[0][0]+Math.sin(angle)*coordinates[1][0];
+				double y = coordinates[0][1]+Math.cos(angle)*coordinates[1][1];
 				glVertex2d(x, y);
 			}
 		glEnd();
+	}
+
+	@Override
+	public int getId() {
+		return this.id;
+	}
+
+	@Override
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public boolean getAttraction() {
+		return this.attraction;
+	}
+
+	@Override
+	public void setAttraction(boolean attraction) {
+		this.attraction = attraction;
+	}
+
+	@Override
+	public int[][] getCoordinates() {
+		return this.coordinates;
+	}
+	
+	@Override
+	public void setCoordinates(int[][] coordinates) {
+		this.coordinates = coordinates;
+	}
+	
+	@Override
+	public int getWeight() {
+		return this.weight;
+	}
+	
+	@Override
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	@Override
+	public int[] getForce() {
+		return this.force;
+	}
+
+	@Override
+	public void setForce(int[] force) {
+		this.force = force;
 	}
 }
