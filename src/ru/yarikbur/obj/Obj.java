@@ -17,4 +17,7 @@ public interface Obj {
 	
 	int[] getForce();
 	void setForce(int[] force);
+	
+	int getBounce();
+	void setBounce(int bounce);
 }

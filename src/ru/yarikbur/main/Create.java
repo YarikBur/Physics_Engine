@@ -15,10 +15,10 @@ public class Create {
 	
 	private static void init() {
 		int[][] ballC= {{400, 400}, {30, 30}};
-		ball = new Ball(ballC, 5, true, 255);
+		ball = new Ball(ballC, 5, true, 3, 255);
 		
-		int floor[][] = {{100,0}, {200, 10}};
-		quadrilateral = new Quadrilateral(floor, 100, false, 50f);
+		int floor[][] = {{100,0}, {600, 10}};
+		quadrilateral = new Quadrilateral(floor, 100, false, 1, 50f);
 	}
 	
 	private static void addObj() {

@@ -11,12 +11,13 @@ public class Quadrilateral implements Obj{
 	private int[][] coordinates;
 	private int[] force = new int[2];
 	private int weight;
+	private int bounce;
 	private int id;
 	private boolean attraction;
 	private float color;
 	
 	
-	public Quadrilateral(int[][] coordinates, int weight, boolean attraction, float color) {
+	public Quadrilateral(int[][] coordinates, int weight, boolean attraction, float bounce, float color) {
 		this.setCoordinates(coordinates);
 		this.setWeight(weight);
 		this.setAttraction(attraction);
@@ -81,5 +82,15 @@ public class Quadrilateral implements Obj{
 	@Override
 	public void setForce(int[] force) {
 		this.force = force;
+	}
+
+	@Override
+	public int getBounce() {
+		return bounce;
+	}
+
+	@Override
+	public void setBounce(int bounce) {
+		this.bounce = bounce;
 	}
 }
