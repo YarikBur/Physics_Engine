@@ -25,12 +25,10 @@ public class Gravity {
 						&& coordinates[0][0] >= objs.getCoordinates()[0][0]) {
 //					bounce(obj, force[0]);
 
-					float h = -100+(obj.getBounce()*10);
-					h=0;
+					float h = -10+(obj.getBounce()*10);
 					
 					force[0] = h;
 					minus = (coordinates[0][1]-coordinates[1][1])-(objs.getCoordinates()[0][1]+objs.getCoordinates()[1][1]);
-//					force[0] = minus;
 				} else
 					force[0] = obj.getForce()[0]+(obj.getWeight()/98f)*9.8f;
 				

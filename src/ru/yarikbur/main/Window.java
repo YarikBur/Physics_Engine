@@ -42,6 +42,8 @@ import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
 
+import ru.yarikbur.utils.Timer;
+
 public class Window{
 	private long window;
 	private long monitor;
@@ -67,6 +69,7 @@ public class Window{
 		loop();
 		
 		System.out.println("Bie");
+		Timer.timerStop();
 		
 		glfwFreeCallbacks(window);
 		glfwDestroyWindow(window);
