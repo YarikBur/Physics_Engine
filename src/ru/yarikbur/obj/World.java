@@ -26,7 +26,7 @@ public class World {
 							sus = false;
 					}
 					if(!sus)
-						rnd = Random.randomInt(0, Integer.MAX_VALUE);
+						rnd = Random.randomInt(0, Integer.MAX_VALUE/20);
 				}
 				object.setId(rnd);
 			}

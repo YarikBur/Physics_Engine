@@ -4,6 +4,7 @@ import ru.yarikbur.obj.Obj;
 import ru.yarikbur.obj.World;
 
 public class Gravity {
+	
 	static float[] force = new float[2];
 	
 	public static void attraction() {
@@ -15,34 +16,35 @@ public class Gravity {
 	}
 	
 	private static void gravity(Obj obj) {
-		int coordinates[][] = obj.getCoordinates().clone();
-		int minus = 0;
-		
+		if(contact(obj))
+			bounce(obj);
+		else
+			fall(obj);
+		System.out.println("Obj ID[" + obj.getId() +"]: Speed[" + obj.getSpeed()[0] + ", " + obj.getSpeed()[1] + "]");
+	}
+	
+	private static boolean contact(Obj obj) {
 		for(Obj objs : World.getObj()) {
 			if(objs.getId()!=obj.getId() && !objs.getAttraction()) {
-				if((coordinates[0][1]-coordinates[1][1])-(objs.getCoordinates()[0][1]+objs.getCoordinates()[1][1]) <= 0 
-						&& coordinates[0][0] <= objs.getCoordinates()[0][0]+objs.getCoordinates()[1][0]
-						&& coordinates[0][0] >= objs.getCoordinates()[0][0]) {
-//					bounce(obj, force[0]);
-
-					float h = -10+(obj.getBounce()*10);
-					
-					force[0] = h;
-					minus = (coordinates[0][1]-coordinates[1][1])-(objs.getCoordinates()[0][1]+objs.getCoordinates()[1][1]);
+				if((obj.getCoordinates()[0][1]-obj.getCoordinates()[1][1])-(objs.getCoordinates()[0][1]+objs.getCoordinates()[1][1]) <= 0 
+						&& obj.getCoordinates()[0][0] <= objs.getCoordinates()[0][0]+objs.getCoordinates()[1][0]
+						&& obj.getCoordinates()[0][0] >= objs.getCoordinates()[0][0]) {
+					return true;
 				} else
-					force[0] = obj.getForce()[0]+(obj.getWeight()/98f)*9.8f;
-				
-				obj.setForce(Vertex.vertex2d(Math.round(force[0]), Math.round(force[1])));
-				int y = (int) (coordinates[0][1]-obj.getForce()[0]-minus);
-				force[0] = 0;
-				obj.setCoordinates(Vertex.coordinates2d(coordinates[0][0], y, coordinates[1][0], coordinates[1][1]));
-				System.out.println("Obj force: " + obj.getForce()[0]);
+					return false;
 			}
 		}
+		return false;
 	}
-
-	private static void bounce(Obj obj, float force) {
-		float h = -100;
-		force = h;
+	
+	private static void fall(Obj obj) {
+		
+	}
+	
+	private static void bounce(Obj obj) {
+		int speedV0 = obj.getSpeed()[1];
+		int time = (Timer.getMiliLast()/1000);
+		float h = speedV0 * time - (9.8f*(time*time))/2;
+		System.out.println(h);
 	}
 }

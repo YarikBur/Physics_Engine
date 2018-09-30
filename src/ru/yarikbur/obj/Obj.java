@@ -15,8 +15,8 @@ public interface Obj {
 	int getWeight();
 	void setWeight(int weight);
 	
-	int[] getForce();
-	void setForce(int[] force);
+	int[] getSpeed();
+	void setSpeed(int[] force);
 	
 	int getBounce();
 	void setBounce(int bounce);

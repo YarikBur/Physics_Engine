@@ -9,7 +9,8 @@ import static org.lwjgl.opengl.GL11.glVertex2f;
 public class Quadrilateral implements Obj{
 //	[] - X, Y; [] - Right, Top
 	private int[][] coordinates;
-	private int[] force = new int[2];
+//	[] - X, Y;
+	private int[] speed = new int[2];
 	private int weight;
 	private int bounce;
 	private int id;
@@ -75,13 +76,13 @@ public class Quadrilateral implements Obj{
 	}
 	
 	@Override
-	public int[] getForce() {
-		return this.force;
+	public int[] getSpeed() {
+		return this.speed;
 	}
 
 	@Override
-	public void setForce(int[] force) {
-		this.force = force;
+	public void setSpeed(int[] speed) {
+		this.speed = speed;
 	}
 
 	@Override

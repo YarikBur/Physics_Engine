@@ -1,6 +1,6 @@
 package ru.yarikbur.utils;
 
-public class Timer implements Runnable{
+public class Timer implements Runnable {
 	private static int miliLast = 0;
 	private static int miliFuture = 0;
 	private static int sec = 0;
@@ -8,9 +8,16 @@ public class Timer implements Runnable{
 	private static int hou = 0;
 	private static Thread timer;
 	private static boolean destroy = false;
+	private static int milisDelay = 50;
 	
 	public Timer(){
-		timer = new Thread(this, "Timer");
+		timer = new Thread(this, "Timer delay: " + milisDelay);
+		timer.start();
+	}
+	
+	public Timer(int milis){
+		milisDelay = milis;
+		timer = new Thread(this, "Timer delay: " + milisDelay);
 		timer.start();
 	}
 	
@@ -18,7 +25,7 @@ public class Timer implements Runnable{
 		destroy = true;
 	}
 	
-	private static boolean switchTime() {
+	public static boolean switchTime() {
 		if(miliFuture > miliLast)
 			return true;
 		else
@@ -28,7 +35,7 @@ public class Timer implements Runnable{
 	private static void update() {
 		if(switchTime()) {
 			miliLast = miliFuture;
-			if(miliLast == 1000) {
+			if(miliLast >= 1000) {
 				miliLast = 0;
 				miliFuture = 0;
 				sec += 1;
@@ -46,13 +53,12 @@ public class Timer implements Runnable{
 	
 	@Override
 	public void run() {
-		System.out.println("Test");
 		while(!destroy) {
 			try {
-				miliFuture += 50;
+				miliFuture += milisDelay;
 				update();
-				Thread.sleep(50);
-				System.out.println("Miliseconds: " + miliLast + "Second: " + sec + " Minutes: " + min + " Hours: " + hou);
+				Thread.sleep(milisDelay);
+//				System.out.println("Miliseconds: " + miliLast + "Second: " + sec + " Minutes: " + min + " Hours: " + hou);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -64,39 +70,39 @@ public class Timer implements Runnable{
 		return miliLast;
 	}
 
-	public static void setSecLast(int miliLast) {
+	public static void setMiliLast(int miliLast) {
 		Timer.miliLast = miliLast;
 	}
 
-	public static int getSecFuture() {
+	public static int getmiliFuture() {
 		return miliFuture;
 	}
 
-	public static void setSecFuture(int miliFuture) {
+	public static void setMiliFuture(int miliFuture) {
 		Timer.miliFuture = miliFuture;
 	}
 	
-	public static int getSecLast() {
+	public static int getSec() {
 		return sec;
 	}
 
-	public static void setCesLast(int sec) {
+	public static void setCes(int sec) {
 		Timer.sec = sec;
 	}
 	
-	public static int getMinLast() {
+	public static int getMin() {
 		return min;
 	}
 
-	public static void setMinLast(int min) {
+	public static void setMin(int min) {
 		Timer.min = min;
 	}
 
-	public static int getHouLast() {
+	public static int getHou() {
 		return hou;
 	}
 
-	public static void setHouLast(int hou) {
+	public static void setHou(int hou) {
 		Timer.hou = hou;
 	}
 	

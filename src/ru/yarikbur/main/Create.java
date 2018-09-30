@@ -3,15 +3,12 @@ package ru.yarikbur.main;
 import ru.yarikbur.obj.Ball;
 import ru.yarikbur.obj.Quadrilateral;
 import ru.yarikbur.obj.World;
-import ru.yarikbur.utils.Timer;
 
 public class Create {
 	static Ball ball;
 	static Quadrilateral quadrilateral;
 	
 	public static void create() {
-		new Timer();
-		
 		init();
 		addObj();
 	}
