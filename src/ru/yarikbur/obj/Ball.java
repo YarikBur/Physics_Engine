@@ -20,7 +20,7 @@ public class Ball extends Properties{
 		glBegin(GL_TRIANGLE_FAN);
 			glColor3f((this.getColor()/255), (this.getColor()/255), (this.getColor()/255));
 			glVertex2f(this.getCoordinates()[0], this.getCoordinates()[1]);
-			for(float angle=0; angle<2*Math.PI+0.15f; angle+=0.2f) {
+			for(float angle=0; angle<2*Math.PI+0.1f; angle+=0.2f) {
 				double x = this.getCoordinates()[0]+Math.sin(angle)*this.getSize()[0];
 				double y = this.getCoordinates()[1]+Math.cos(angle)*this.getSize()[1];
 				glVertex2d(x, y);

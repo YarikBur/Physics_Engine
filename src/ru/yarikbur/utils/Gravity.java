@@ -35,6 +35,8 @@ public class Gravity {
 		for(Obj objs : World.getObj()) {
 			if(objs.getId()!=obj.getId() && !objs.getAttraction()) {
 				if((obj.getCoordinates()[1]-obj.getSize()[1])-(objs.getCoordinates()[1]+objs.getSize()[1]) <= 0) {
+					float minus = (objs.getCoordinates()[1]+objs.getSize()[1])-(obj.getCoordinates()[1]-obj.getSize()[1]);
+					obj.setCoordinates(Vertex.vertex2d(obj.getCoordinates()[0], obj.getCoordinates()[1]+minus));
 					return true;
 				} else
 					return false;
@@ -52,8 +54,9 @@ public class Gravity {
 	}
 	
 	private static void fall(Obj obj) {
-		float speed = ((-g*obj.getWeight())/10)*t*t;
+		float speed = ((-g*obj.getWeight())/10)*(t*t);
 		obj.setSpeed(Vertex.vertex2d(obj.getSpeed()[0], speed));
+		
 	}
 	
 	private static void bounce(Obj obj) {
