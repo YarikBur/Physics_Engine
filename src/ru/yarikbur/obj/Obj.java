@@ -9,15 +9,21 @@ public interface Obj {
 	boolean getAttraction();
 	void setAttraction(boolean attraction);
 	
-	int[][] getCoordinates();
-	void setCoordinates(int[][] coordinates);
+	float[] getCoordinates();
+	void setCoordinates(float[] coordinates);
 	
-	int getWeight();
-	void setWeight(int weight);
+	float[] getSize();
+	void setSize(float[] size);
 	
-	int[] getSpeed();
-	void setSpeed(int[] force);
+	float getWeight();
+	void setWeight(float weight);
 	
-	int getBounce();
-	void setBounce(int bounce);
+	float[] getSpeed();
+	void setSpeed(float[] speed);
+	
+	float getBounce();
+	void setBounce(float bounce);
+	
+	float getColor();
+	void setColor(float color);
 }

@@ -6,6 +6,11 @@ public class Vertex {
 		int matrix[] = {a, b};
 		return matrix;
 	}
+
+	public static float[] vertex2d(float a, float b) {
+		float matrix[] = {a, b};
+		return matrix;
+	}
 	
 	public static int[] vertex3d(int a, int b, int c) {
 		int matrix[] = {a, b, c};
