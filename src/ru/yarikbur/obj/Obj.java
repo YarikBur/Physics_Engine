@@ -9,8 +9,14 @@ public interface Obj {
 	boolean getAttraction();
 	void setAttraction(boolean attraction);
 	
+	boolean getBounced();
+	void setBounced(boolean bounced);
+	
 	float[] getCoordinates();
 	void setCoordinates(float[] coordinates);
+	
+	float[] getMaxCoordiantes();
+	void setMaxCoordiantes(float[] maxCoordiantes);
 	
 	float[] getSize();
 	void setSize(float[] size);

@@ -7,9 +7,11 @@ public class Properties implements Obj{
 	private float bounce;
 	private float color;
 	private float[] coordinates = new float[2];
+	private float[] maxCoordiantes = new float[2];
 	private float[] size = new float[2];
 	private float[] speed = new float[2];
 	private boolean attractoin;
+	private boolean bounced;
 	
 	@Override
 	public int getId() {
@@ -95,5 +97,25 @@ public class Properties implements Obj{
 	@Override
 	public void setColor(float color) {
 		this.color = color;
+	}
+
+	@Override
+	public float[] getMaxCoordiantes() {
+		return maxCoordiantes;
+	}
+
+	@Override
+	public void setMaxCoordiantes(float[] maxCoordiantes) {
+		this.maxCoordiantes = maxCoordiantes;
+	}
+
+	@Override
+	public boolean getBounced() {
+		return bounced;
+	}
+
+	@Override
+	public void setBounced(boolean bounced) {
+		this.bounced = bounced;
 	}
 }

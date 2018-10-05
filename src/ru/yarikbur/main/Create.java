@@ -24,7 +24,7 @@ public class Create {
 	
 	private static void addObj() {
 		World.addObj(ball);
-		World.addObj(triangle);
+//		World.addObj(triangle);
 		World.addObj(quadrilateral);
 	}
 }

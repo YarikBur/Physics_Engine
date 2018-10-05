@@ -2,6 +2,7 @@ package ru.yarikbur.utils;
 
 import ru.yarikbur.obj.Obj;
 import ru.yarikbur.obj.World;
+import ru.yarikbur.render.Debug;
 
 public class Gravity {
 	
@@ -23,8 +24,8 @@ public class Gravity {
 			bounce(obj);
 		else
 			fall(obj);
-		System.out.println("Obj ID[" + obj.getId() +"]: Speed[" + obj.getSpeed()[0] + ", " + obj.getSpeed()[1] + "]" + 
-			" Coordinates: [" + obj.getCoordinates()[0] + ", " + obj.getCoordinates()[1] + "]");
+		Debug.println("Obj ID[" + obj.getId() +"]: Speed[" + obj.getSpeed()[0] + ", " + obj.getSpeed()[1] + "]" + 
+			" Coordinates: [" + obj.getCoordinates()[0] + ", " + obj.getCoordinates()[1] + "] Bounced: " + obj.getBounced());
 	}
 	
 	private static void time() {
@@ -54,16 +55,27 @@ public class Gravity {
 	}
 	
 	private static void fall(Obj obj) {
-		float speed = ((-g*obj.getWeight())/10)*(t*t);
+		float speedV0 = obj.getSpeed()[1];
+		float speed = speedV0 + ((-g*obj.getWeight())/10)*(t*t);
 		obj.setSpeed(Vertex.vertex2d(obj.getSpeed()[0], speed));
-		
 	}
 	
 	private static void bounce(Obj obj) {
-		float speedV0 = -(obj.getSpeed()[1]);
-		float speed = speedV0-g*t;
-		speed = 0;
-		
-		obj.setSpeed(Vertex.vertex2d(obj.getSpeed()[0], speed));
+		if(!obj.getBounced()) {
+			float speedV0 = -(obj.getSpeed()[1]);
+			float tMax = speedV0/g;
+			float hMax = ((speedV0*speedV0)/(2*g))*100*obj.getBounce();
+			float speed = speedV0 - g*t;
+			
+			obj.setMaxCoordiantes(Vertex.vertex2d(obj.getCoordinates()[0], hMax));
+			
+			Debug.println("Max time: " + tMax + " hMax: " + hMax + " speed: " + -(speed));
+			
+			obj.setSpeed(Vertex.vertex2d(obj.getSpeed()[0], -(speed)));
+			obj.setBounced(true);
+		} else {
+			if(obj.getCoordinates()[1] == obj.getMaxCoordiantes()[1])
+				obj.setBounced(false);
+		}
 	}
 }
